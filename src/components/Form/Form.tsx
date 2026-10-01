@@ -1,0 +1,30 @@
+import './Form.module.less'
+import {useState} from "react";
+import type {SyntheticEvent} from "react";
+import type {Task} from '../../shared/config/Task.ts'
+
+interface FormProps {
+    addTask: (TaskName: Task) => void;
+}
+
+export function Form({addTask}: FormProps) {
+    const [name, setName] = useState<string>('')
+
+    const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        addTask({id: crypto.randomUUID(), name: name});
+        setName('');
+    }
+
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <input type="text"
+                       value={name}
+                       onChange={event => setName(event.target.value)}/>
+                <button type="submit">submit</button>
+            </form>
+        </>
+    )
+
+}
