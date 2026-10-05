@@ -1,4 +1,4 @@
-import type {Task} from "../../shared/config/Task.ts";
+import type {Task} from "../../shared/types/Task.ts";
 
 interface PropsTaskDel extends Task {
     onDelete(id: string): void;

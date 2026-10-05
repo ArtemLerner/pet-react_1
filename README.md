@@ -1,36 +1,100 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# Todo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small task manager built with React and TypeScript. Add tasks, remove them, and keep your list in view. Built as a pet project to practice component architecture, typed props, state management and client-side routing.
 
-Currently, two official plugins are available:
+**Live demo:** https://pet-react1.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<!-- Replace with a real screenshot: save it as docs/screenshot.png -->
+![Todo List screenshot](docs/screenshot.png)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add a task through a form (empty and whitespace-only input is ignored)
+- Delete any task from the list
+- Unique task ids via `crypto.randomUUID()`
+- Client-side routing with React Router
+- Strictly typed components and props (TypeScript)
+- Linting with oxlint
 
-## Expanding the Oxlint configuration
+## Tech stack
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+| Area | Tools |
+| --- | --- |
+| UI | React 19 |
+| Language | TypeScript |
+| Build tool | Vite |
+| Routing | React Router 7 |
+| Styling | Less |
+| Linting | oxlint |
+| Deployment | Vercel |
+
+## Getting started
+
+Requirements: Node.js 20+ and npm.
+
+```bash
+# clone the repository
+git clone https://github.com/ArtemLerner/pet-react_1.git
+cd pet-react_1
+
+# install dependencies
+npm install
+
+# start the dev server
+npm run dev
+```
+
+The app will be available at http://localhost:5173.
+
+### Available scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run oxlint |
+
+## Project structure
+
+```
+src/
+├── app/
+│   └── router.tsx         # route definitions
+├── components/
+│   ├── Form/              # task input form
+│   └── Task/              # single task item
+├── pages/
+│   └── HomePage.tsx       # main page, owns the tasks state
+├── shared/
+│   └── config/            # shared types and constants
+├── index.less             # global styles
+└── main.tsx               # app entry point
+```
+
+State lives in `HomePage` and is passed down through props: `Form` receives an `addTask` callback, and each task receives an `onDelete` callback.
+
+## Deployment
+
+The project is deployed on Vercel. Every push to `main` triggers a new production deployment. Since this is a single-page app, `vercel.json` rewrites all routes to `index.html`:
 
 ```json
 {
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-=======
-# pet-react_1
->>>>>>> 71579ae5454fd28d7bc6c7f153ec22b971c081a9
+## Roadmap
+
+- [ ] Mark tasks as completed
+- [ ] Edit existing tasks
+- [ ] Filter tasks (all / active / completed)
+- [ ] Persist tasks in `localStorage`
+- [ ] Empty state and responsive layout improvements
+- [ ] Unit tests with Vitest
+
+## Author
+
+**Artem Lerner**
+
+- GitHub: [@ArtemLerner](https://github.com/ArtemLerner)

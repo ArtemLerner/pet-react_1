@@ -1,7 +1,7 @@
 import './Form.module.less'
 import {useState} from "react";
 import type {SyntheticEvent} from "react";
-import type {Task} from '../../shared/config/Task.ts'
+import type {Task} from '../../shared/types/Task.ts'
 
 interface FormProps {
     addTask: (TaskName: Task) => void;

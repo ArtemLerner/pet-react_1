@@ -1,7 +1,7 @@
 import {Form} from "../components/Form/Form.tsx";
 // import {Header} from "../components/Header/Header.tsx";
 import {TaskRender} from "../components/Task/Task.tsx";
-import type {Task} from "../shared/config/Task.ts";
+import type {Task} from "../shared/types/Task.ts";
 import {useState} from "react";
 
 
