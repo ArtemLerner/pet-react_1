@@ -7,19 +7,27 @@ import {useState} from "react";
 
 export function HomePage() {
     const [taskName, setTaskName] = useState<Task[]>([])
+
     const handleAddTask = (newTask: Task) =>{
         setTaskName(prevTask => [...prevTask, newTask]);
     }
 
+    const handleDeleteTask = (id: string) => {
+        setTaskName(prevTask => prevTask.filter(task => task.id !== id))
+    }
     return (
         <>
             {/*<Header/>*/}
             <main>
-
                 <div className="list_task">
                 {
                     taskName.map(item => (
-                        <TaskRender key={item.id} name={item.name} />
+                        <TaskRender
+                            key={item.id}
+                            name={item.name}
+                            id={item.id}
+                            onDelete={handleDeleteTask}
+                        />
                     ))
                 }
                 </div>
