@@ -67,7 +67,7 @@ src/
 ├── pages/
 │   └── HomePage.tsx       # main page, owns the tasks state
 ├── shared/
-│   └── config/            # shared types and constants
+│   └── types/            # shared types and constants
 ├── index.less             # global styles
 └── main.tsx               # app entry point
 ```
@@ -83,15 +83,6 @@ The project is deployed on Vercel. Every push to `main` triggers a new productio
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
 ```
-
-## Roadmap
-
-- [ ] Mark tasks as completed
-- [ ] Edit existing tasks
-- [ ] Filter tasks (all / active / completed)
-- [ ] Persist tasks in `localStorage`
-- [ ] Empty state and responsive layout improvements
-- [ ] Unit tests with Vitest
 
 ## Author
 
